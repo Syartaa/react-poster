@@ -1,14 +1,12 @@
+/* eslint-disable react/prop-types */
 import classes from "./Modal.module.css";
 
-
-export default function Modal() {
+export default function Modal({children, onClose}) {
   return (
     <>
-    <div className={classes.backdrop}>
-        <dialog className={classes.modal}>
-
-        </dialog>
-    </div>
+      <div className={classes.backdrop} onClick={onClose}>
+        <dialog open className={classes.modal}>{children}</dialog>
+      </div>
     </>
-  )
+  );
 }
