@@ -25,7 +25,6 @@ function NewPost({  onAddPost }) {
     };
     console.log(postData);
     onAddPost(postData);
-    onCancel();
   }
 
   return (
