@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { useState } from "react";
 
 import NewPost from "./NewPost";
@@ -5,15 +6,11 @@ import Post from "./Post";
 import classes from "./PostsList.module.css";
 import Modal from "./Modal";
 
-const PostsList = () => {
+const PostsList = ({isPosting, onStopPosting }) => {
   const [enteredBody, setEnteredBody] = useState("");
   const [enteredAuthor, setEnteredAuthor] = useState("");
-  const [modalIsVisible, setModalIsVisible] = useState(true);
 
-  function hideModalHandler() {
-    setModalIsVisible(false);
-  }
-
+ 
   function bodyChangeHandler(event) {
     setEnteredBody(event.target.value);
   }
@@ -37,8 +34,8 @@ const PostsList = () => {
 
   return (
     <>
-      {modalIsVisible && (
-        <Modal onClose={hideModalHandler}>
+      {isPosting && (
+        <Modal onClose={onStopPosting}>
           <NewPost
             onBodyChange={bodyChangeHandler}
             onAuthorChange={authorChangeHandler}
